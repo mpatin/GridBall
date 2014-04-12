@@ -14,6 +14,7 @@ int bufferHeight = 100;
 int sectionHeight = 500;
 int holeSize = 20;
 int ballSize = 30;
+int speed = 1;
 
 NSTimer * timer;
 bool r;
@@ -52,13 +53,13 @@ bool l;
     self.ballView.layer.zPosition = 1;
 }
 
-- (void)viewsDoCollide:(UIView *)view1 :(UIView *)view2{
-    if(CGRectIntersectsRect(view1.frame, view2.frame))
+- (bool) viewsDoCollide:(UIView *)view1 and:(UIView *)view2{
+    CGRect myRect = CGRectMake(view1.frame.origin.x, view1.frame.origin.y+self.myView.frame.origin.y, view1.frame.size.width, view1.frame.size.height);
+    if(CGRectIntersectsRect(myRect, view2.frame))
     {
-        printf("Yes");
+        return 1;
     }
-    else
-        printf("No");
+    return 0;
 }
 
 - (void) buildSection: (int) n {
@@ -78,12 +79,43 @@ bool l;
 }
 
 
+- (void) tick:(NSTimeInterval)time {
+    self.myView.frame=CGRectMake(0, self.myView.frame.origin.y+speed, self.myView.frame.size.width, self.myView.frame.size.height);
+    NSArray *blocks = [self.myView subviews];
+    for (UIView *v in blocks) {
+        //if( v.frame.origin.y>self.myView.frame.size.height/2 && v.frame.origin.y<self.myView.frame.size.height){
+          //  NSLog(@"Rect: %f %f", v.frame.origin.x, v.frame.origin.y );
+         //   NSLog(@"Ball: %f %f", self.ballView.frame.origin.x, self.ballView.frame.origin.y);
+            if([self viewsDoCollide:v and: self.ballView]){
+                speed = 0;
+                //NSLog(@"COLLISION");
+                [self gameOver];
+            }
+       // }
+    }
+    //NSLog(@"%f, %f", ((UIView *)self.myView.subviews[0]).frame.origin.x,((UIView *)self.myView.subviews[0]).frame.origin.y);
+}
+
+- (void) gameOver {
+    NSLog(@"Game Over! Score: %f", self.myView.frame.origin.y+mapHeight);
+}
 - (IBAction)button1:(id)sender {
     NSLog(@"button tapped");
-    [UIView animateWithDuration:30
+    /*[UIView animateWithDuration:30
                      animations:^(){
                          self.myView.frame=CGRectMake(0, mapHeight, self.myView.frame.size.width, self.myView.frame.size.height);
+                         NSArray *blocks = [self.myView subviews];
+                         for (UIView *v in blocks) {
+                             [self viewsDoCollide:self.myView.subviews.v and: self.ballView];
+
+                         }
                      }];
+     */
+    [NSTimer scheduledTimerWithTimeInterval:0.05
+                                     target:self
+                                   selector:@selector(tick:)
+                                   userInfo:nil
+                                    repeats:YES];
     
 }
 
