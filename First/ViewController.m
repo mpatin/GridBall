@@ -8,12 +8,13 @@
 
 #import "ViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#include <math.h>
 
 int mapHeight = 50100;
 int bufferHeight = 200;
 int sectionHeight = 500;
 int holeSize = 20;
-int ballSize = 30;
+int ballSize = 25;
 int speed = 2;
 
 NSTimer * timer;
@@ -29,7 +30,7 @@ bool l;
 @property (weak, nonatomic) IBOutlet UIButton *leftButton;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
 @property (strong, nonatomic) NSMutableArray *holeArray;
-
+@property (strong, nonatomic) NSTimer *ballMoveTimer;
 
 
 @end
@@ -78,7 +79,6 @@ bool l;
     //for(int n=1; n<=(mapHeight-bufferHeight)/sectionHeight; n++){
     for(int n=1; n<=((mapHeight-bufferHeight)/sectionHeight); n++){
         [self buildSection: n ];
-        
     }
     
 
@@ -111,7 +111,8 @@ bool l;
 }
 
 - (void) buildSection: (int) n {
-    for (int p=0; p<n; p++){
+    double v = ceil(log1p(n))*5;
+    for (int p=0; p< (int) v; p++){
         int y = (mapHeight-bufferHeight-self.view.frame.size.height) - (arc4random() % (sectionHeight-holeSize) + (n-1)*sectionHeight + holeSize);
         int x = arc4random() % (int) (self.myView.frame.size.width-holeSize);
         [self addHole:x and: y];
@@ -151,6 +152,7 @@ bool l;
 }
 
 - (void) gameOver {
+    [self.ballMoveTimer invalidate];
     self.rightButton.enabled = NO;
     self.leftButton.enabled = NO;
     
@@ -213,7 +215,7 @@ bool l;
                      }];
      */
     [self.speedTimer invalidate];
-    self.speedTimer = [NSTimer scheduledTimerWithTimeInterval:0.01
+    self.speedTimer = [NSTimer scheduledTimerWithTimeInterval:0.005
                                      target:self
                                    selector:@selector(tick:)
                                    userInfo:nil
@@ -228,7 +230,7 @@ bool l;
 -(void)viewDidLoad {
     r = false;
     l = false;
-    [NSTimer scheduledTimerWithTimeInterval:0.006
+    self.ballMoveTimer =[NSTimer scheduledTimerWithTimeInterval:0.006
                                      target:self
                                    selector:@selector(moveBall:)
                                    userInfo:nil
