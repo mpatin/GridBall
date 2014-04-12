@@ -28,7 +28,6 @@ bool l;
 @property (weak, nonatomic) IBOutlet UIButton *rightButton;
 @property (weak, nonatomic) IBOutlet UIButton *leftButton;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
-@property (weak, nonatomic) IBOutlet UIButton *playAgain;
 @property (strong, nonatomic) NSMutableArray *holeArray;
 
 
@@ -52,7 +51,6 @@ bool l;
     self.startButton.enabled = YES;
     self.startButton.enabled = NO;
 
-    [self showInstructions];
     [self startGame];
     
     
@@ -63,7 +61,7 @@ bool l;
     [self.view sendSubviewToBack:myView];
     
     UILabel *instructionsLabelLeft =  [[UILabel alloc] initWithFrame: CGRectMake(0,mapHeight-self.view.frame.size.height,self.view.frame.size.width/2,self.view.frame.size.height)];
-    instructionsLabelLeft.text = @"Move Left"; //etc...
+    instructionsLabelLeft.text = @"Tap to Move Left"; //etc...
     [self.myView addSubview:instructionsLabelLeft];
     [[instructionsLabelLeft layer] setBackgroundColor: [[UIColor redColor] CGColor]];
     //instructionsLabelLeft.lineBreakMode = NSLineBreakByWordWrapping;
@@ -71,7 +69,7 @@ bool l;
     instructionsLabelLeft.textAlignment = NSTextAlignmentCenter;
     
     UILabel *instructionsLabelRight =  [[UILabel alloc] initWithFrame: CGRectMake(self.view.frame.size.width/2,mapHeight-self.view.frame.size.height,self.view.frame.size.width/2,self.view.frame.size.height)];
-    instructionsLabelRight.text = @"Move Right"; //etc...
+    instructionsLabelRight.text = @"Tap to Move Right"; //etc...
     [self.myView addSubview:instructionsLabelRight];
     [[instructionsLabelRight layer] setBackgroundColor: [[UIColor yellowColor] CGColor]];
     instructionsLabelRight.textAlignment = NSTextAlignmentCenter;
@@ -162,24 +160,41 @@ bool l;
     gameOverView.backgroundColor=[UIColor redColor];
     [self.view addSubview:gameOverView];
     
-    UILabel *label =  [[UILabel alloc] initWithFrame: CGRectMake(self.view.frame.size.width/2-120, self.view.frame.size.height/2-120,220,40)];
-    label.text = @"GAME OVER"; //etc...
-    [self.view addSubview:label];
-    [label setCenter:gameOverView.center];
-    
-    UILabel *scoreLabel =  [[UILabel alloc] initWithFrame: CGRectMake(self.view.frame.size.width/2-120, self.view.frame.size.height/2,220,40)];
-    scoreLabel.text = [NSString stringWithFormat: @"Score: %.0f", self.myView.frame.origin.y+mapHeight-bufferHeight];
-    [self.view addSubview:scoreLabel];
-    [scoreLabel setCenter:scoreLabel.center];
-    
-    UIButton *playAgain = [[UIButton alloc] initWithFrame: CGRectMake(gameOverView.frame.origin.x, gameOverView.frame.origin.y, gameOverView.frame.size.width, gameOverView.frame.size.height)];
+    UILabel *gameOverLabel =  [[UILabel alloc] initWithFrame: CGRectMake(0,0,gameOverView.frame.size.width,gameOverView.frame.size.height/2)];
+    gameOverLabel.text = @"Game Over!"; //etc...
+    [gameOverView addSubview:gameOverLabel];
+    ;
+    gameOverLabel.textAlignment = NSTextAlignmentCenter;
+    [gameOverLabel setFont:[UIFont systemFontOfSize:30]];
 
+    
+    UILabel *scoreLabel = [[UILabel alloc] initWithFrame: CGRectMake(0,0,gameOverView.frame.size.width,gameOverView.frame.size.height)];
+    scoreLabel.text = [NSString stringWithFormat: @"Score: %d", (int)self.myView.frame.origin.y+mapHeight-bufferHeight];
+    [gameOverView addSubview:scoreLabel];
+    scoreLabel.textAlignment = NSTextAlignmentCenter;
+    [scoreLabel setFont:[UIFont systemFontOfSize:20]];
+    
+    UILabel *playAgainLabel =  [[UILabel alloc] initWithFrame: CGRectMake(0,gameOverView.frame.size.height/2,gameOverView.frame.size.width,gameOverView.frame.size.height/2)];
+    playAgainLabel.text = @"Tap to Play Again"; //etc...
+    [gameOverView addSubview:playAgainLabel];
+    ;
+    playAgainLabel.textAlignment = NSTextAlignmentCenter;
+    [playAgainLabel setFont:[UIFont systemFontOfSize:20]];
+
+    
+    UIButton *playAgain =  [UIButton buttonWithType:UIButtonTypeSystem];
+    [playAgain setTitle:@"" forState:UIControlStateNormal];
+    playAgain.frame=CGRectMake(0, 0, gameOverView.frame.size.width, gameOverView.frame.size.height);
+    [gameOverView addSubview:playAgain];
+    [playAgain addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
+
+}
+-(void)goBack
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
-- (void) showInstructions {
-    
-}
 
 - (void) startGame {
     NSLog(@"button tapped");
