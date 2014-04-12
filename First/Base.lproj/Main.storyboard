@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5023" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--class Prefix:identifier View Controller-->
+        <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
@@ -15,7 +15,61 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6BC-aw-ItI">
+                                <rect key="frame" x="137" y="530" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="aHY-pX-xPH"/>
+                                    <constraint firstAttribute="width" constant="46" id="ttt-qE-2Du"/>
+                                </constraints>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="button1:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="CyB-Zk-MAG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k53-1P-Gcf">
+                                <rect key="frame" x="183" y="28" width="117" height="490"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="theTouchDownRight" destination="vXZ-lx-hvc" eventType="touchDown" id="FcJ-WM-AIb"/>
+                                    <action selector="theTouchUpInsideRight" destination="vXZ-lx-hvc" eventType="touchUpInside" id="hll-GU-8Ld"/>
+                                    <action selector="theTouchUpOutsideRight" destination="vXZ-lx-hvc" eventType="touchUpOutside" id="7WR-S4-G4S"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DHN-dJ-pGJ">
+                                <rect key="frame" x="20" y="28" width="117" height="490"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="117" id="xx0-oD-IRB"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="theTouchDownLeft" destination="vXZ-lx-hvc" eventType="touchDown" id="mrz-hO-7co"/>
+                                    <action selector="theTouchUpInsideLeft" destination="vXZ-lx-hvc" eventType="touchUpInside" id="LZY-H6-ovO"/>
+                                    <action selector="theTouchUpOutsideLeft" destination="vXZ-lx-hvc" eventType="touchUpOutside" id="QIX-1c-mLi"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="k53-1P-Gcf" secondAttribute="bottom" constant="50" id="0yw-nV-8bA"/>
+                            <constraint firstItem="6BC-aw-ItI" firstAttribute="leading" secondItem="DHN-dJ-pGJ" secondAttribute="trailing" id="DmD-s7-7vd"/>
+                            <constraint firstItem="DHN-dJ-pGJ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" symbolic="YES" id="GJn-rj-Ki1"/>
+                            <constraint firstAttribute="centerX" secondItem="6BC-aw-ItI" secondAttribute="centerX" id="IN5-UM-WZ7"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="6BC-aw-ItI" secondAttribute="bottom" constant="20" symbolic="YES" id="U0c-VR-MNw"/>
+                            <constraint firstItem="DHN-dJ-pGJ" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" symbolic="YES" id="UjA-io-0XP"/>
+                            <constraint firstItem="k53-1P-Gcf" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" symbolic="YES" id="Upr-xZ-T3N"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="DHN-dJ-pGJ" secondAttribute="bottom" constant="50" id="dGW-G0-XIO"/>
+                            <constraint firstItem="k53-1P-Gcf" firstAttribute="leading" secondItem="6BC-aw-ItI" secondAttribute="trailing" id="mQ3-Jv-1q8"/>
+                            <constraint firstAttribute="trailing" secondItem="k53-1P-Gcf" secondAttribute="trailing" constant="20" symbolic="YES" id="wsy-YE-8fG"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
