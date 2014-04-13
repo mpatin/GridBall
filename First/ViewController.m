@@ -15,7 +15,7 @@ int bufferHeight = 200;
 int sectionHeight = 500;
 int holeSize = 20;
 int ballSize = 25;
-int speed = 1;
+int speed = 3;
 int score = 0;
 int sectionNum = 1;
 
@@ -245,7 +245,6 @@ bool l;
     if(bottom.frame.origin.y>self.view.bounds.size.height){
         [bottom removeFromSuperview];
         [self.sectionsArray removeObject: bottom];
-        NSLog(@"%@", @"Deleted");
         UIView* section = [self buildSection:sectionNum];
         //section.backgroundColor = [UIColor blackColor];
         section.frame = CGRectMake(0, self.view.bounds.size.height-1500, section.frame.size.width, sectionHeight);
