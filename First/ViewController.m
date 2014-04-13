@@ -384,7 +384,7 @@ bool l;
 -(void)viewDidLoad {
     r = false;
     l = false;
-    self.ballMoveTimer =[NSTimer scheduledTimerWithTimeInterval:0.006
+    self.ballMoveTimer =[NSTimer scheduledTimerWithTimeInterval:0.005
                                      target:self
                                    selector:@selector(moveBall:)
                                    userInfo:nil
