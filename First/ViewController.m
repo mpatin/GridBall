@@ -296,7 +296,10 @@ bool l;
     
     
     // create view for game over screen
-    UIView* gameOverView=[[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-120, self.view.frame.size.height/2-120, 240,240)];
+    int w = 3 * self.view.frame.size.width / 4;
+    int h = self.view.frame.size.height / 4;
+    
+    UIView* gameOverView=[[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 - w/2, self.view.frame.size.height/2 - h/2, w, h)];
     
     // set game over view parameters
     gameOverView.backgroundColor=[UIColor whiteColor];
@@ -315,7 +318,7 @@ bool l;
     gameOverLabel.text = @"Game Over!"; //etc...
     [gameOverView addSubview:gameOverLabel];
     gameOverLabel.textAlignment = NSTextAlignmentCenter;
-    [gameOverLabel setFont:[UIFont systemFontOfSize:30]];
+    [gameOverLabel setFont:[UIFont systemFontOfSize:28]];
 
     // display user score in a label
     UILabel *scoreLabel = [[UILabel alloc] initWithFrame: CGRectMake(0,0,gameOverView.frame.size.width,gameOverView.frame.size.height)];
