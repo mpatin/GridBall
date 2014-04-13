@@ -35,23 +35,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		41505CA718F8E55B00B55778 /* First.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = First.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		41505CA718F8E55B00B55778 /* CubeJuke.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CubeJuke.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41505CAA18F8E55B00B55778 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		41505CAC18F8E55B00B55778 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		41505CAE18F8E55B00B55778 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		41505CB218F8E55B00B55778 /* First-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "First-Info.plist"; sourceTree = "<group>"; };
+		41505CB218F8E55B00B55778 /* CubeJuke-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CubeJuke-Info.plist"; sourceTree = "<group>"; };
 		41505CB418F8E55B00B55778 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		41505CB618F8E55B00B55778 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		41505CB818F8E55B00B55778 /* First-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "First-Prefix.pch"; sourceTree = "<group>"; };
+		41505CB818F8E55B00B55778 /* CubeJuke-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CubeJuke-Prefix.pch"; sourceTree = "<group>"; };
 		41505CB918F8E55B00B55778 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		41505CBA18F8E55B00B55778 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		41505CBD18F8E55B00B55778 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		41505CBF18F8E55B00B55778 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		41505CC018F8E55B00B55778 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		41505CC218F8E55B00B55778 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		41505CC818F8E55B00B55778 /* FirstTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FirstTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		41505CC818F8E55B00B55778 /* CubeJukeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CubeJukeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		41505CC918F8E55B00B55778 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		41505CD118F8E55B00B55778 /* FirstTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FirstTests-Info.plist"; sourceTree = "<group>"; };
+		41505CD118F8E55B00B55778 /* CubeJukeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CubeJukeTests-Info.plist"; sourceTree = "<group>"; };
 		41505CD318F8E55B00B55778 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		41505CD518F8E55B00B55778 /* FirstTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstTests.m; sourceTree = "<group>"; };
 		416416A818FA40F60097A669 /* MainScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainScreenViewController.h; sourceTree = "<group>"; };
@@ -95,8 +95,8 @@
 		41505CA818F8E55B00B55778 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				41505CA718F8E55B00B55778 /* First.app */,
-				41505CC818F8E55B00B55778 /* FirstTests.xctest */,
+				41505CA718F8E55B00B55778 /* CubeJuke.app */,
+				41505CC818F8E55B00B55778 /* CubeJukeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -131,10 +131,10 @@
 		41505CB118F8E55B00B55778 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				41505CB218F8E55B00B55778 /* First-Info.plist */,
+				41505CB218F8E55B00B55778 /* CubeJuke-Info.plist */,
 				41505CB318F8E55B00B55778 /* InfoPlist.strings */,
 				41505CB618F8E55B00B55778 /* main.m */,
-				41505CB818F8E55B00B55778 /* First-Prefix.pch */,
+				41505CB818F8E55B00B55778 /* CubeJuke-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -151,7 +151,7 @@
 		41505CD018F8E55B00B55778 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				41505CD118F8E55B00B55778 /* FirstTests-Info.plist */,
+				41505CD118F8E55B00B55778 /* CubeJukeTests-Info.plist */,
 				41505CD218F8E55B00B55778 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -160,9 +160,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		41505CA618F8E55B00B55778 /* First */ = {
+		41505CA618F8E55B00B55778 /* CubeJuke */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 41505CD918F8E55B00B55778 /* Build configuration list for PBXNativeTarget "First" */;
+			buildConfigurationList = 41505CD918F8E55B00B55778 /* Build configuration list for PBXNativeTarget "CubeJuke" */;
 			buildPhases = (
 				41505CA318F8E55B00B55778 /* Sources */,
 				41505CA418F8E55B00B55778 /* Frameworks */,
@@ -172,14 +172,14 @@
 			);
 			dependencies = (
 			);
-			name = First;
+			name = CubeJuke;
 			productName = First;
-			productReference = 41505CA718F8E55B00B55778 /* First.app */;
+			productReference = 41505CA718F8E55B00B55778 /* CubeJuke.app */;
 			productType = "com.apple.product-type.application";
 		};
-		41505CC718F8E55B00B55778 /* FirstTests */ = {
+		41505CC718F8E55B00B55778 /* CubeJukeTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 41505CDC18F8E55B00B55778 /* Build configuration list for PBXNativeTarget "FirstTests" */;
+			buildConfigurationList = 41505CDC18F8E55B00B55778 /* Build configuration list for PBXNativeTarget "CubeJukeTests" */;
 			buildPhases = (
 				41505CC418F8E55B00B55778 /* Sources */,
 				41505CC518F8E55B00B55778 /* Frameworks */,
@@ -190,9 +190,9 @@
 			dependencies = (
 				41505CCE18F8E55B00B55778 /* PBXTargetDependency */,
 			);
-			name = FirstTests;
+			name = CubeJukeTests;
 			productName = FirstTests;
-			productReference = 41505CC818F8E55B00B55778 /* FirstTests.xctest */;
+			productReference = 41505CC818F8E55B00B55778 /* CubeJukeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -209,7 +209,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 41505CA218F8E55B00B55778 /* Build configuration list for PBXProject "First" */;
+			buildConfigurationList = 41505CA218F8E55B00B55778 /* Build configuration list for PBXProject "CubeJuke" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -222,8 +222,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				41505CA618F8E55B00B55778 /* First */,
-				41505CC718F8E55B00B55778 /* FirstTests */,
+				41505CA618F8E55B00B55778 /* CubeJuke */,
+				41505CC718F8E55B00B55778 /* CubeJukeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -274,7 +274,7 @@
 /* Begin PBXTargetDependency section */
 		41505CCE18F8E55B00B55778 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 41505CA618F8E55B00B55778 /* First */;
+			target = 41505CA618F8E55B00B55778 /* CubeJuke */;
 			targetProxy = 41505CCD18F8E55B00B55778 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -383,9 +383,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "First/First-Prefix.pch";
-				INFOPLIST_FILE = "First/First-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "First/CubeJuke-Prefix.pch";
+				INFOPLIST_FILE = "First/CubeJuke-Info.plist";
+				PRODUCT_NAME = CubeJuke;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -396,9 +396,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "First/First-Prefix.pch";
-				INFOPLIST_FILE = "First/First-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "First/CubeJuke-Prefix.pch";
+				INFOPLIST_FILE = "First/CubeJuke-Info.plist";
+				PRODUCT_NAME = CubeJuke;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -418,8 +418,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "FirstTests/FirstTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "FirstTests/CubeJukeTests-Info.plist";
+				PRODUCT_NAME = CubeJukeTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -436,8 +436,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "First/First-Prefix.pch";
-				INFOPLIST_FILE = "FirstTests/FirstTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "FirstTests/CubeJukeTests-Info.plist";
+				PRODUCT_NAME = CubeJukeTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -446,7 +446,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		41505CA218F8E55B00B55778 /* Build configuration list for PBXProject "First" */ = {
+		41505CA218F8E55B00B55778 /* Build configuration list for PBXProject "CubeJuke" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				41505CD718F8E55B00B55778 /* Debug */,
@@ -455,7 +455,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		41505CD918F8E55B00B55778 /* Build configuration list for PBXNativeTarget "First" */ = {
+		41505CD918F8E55B00B55778 /* Build configuration list for PBXNativeTarget "CubeJuke" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				41505CDA18F8E55B00B55778 /* Debug */,
@@ -464,7 +464,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		41505CDC18F8E55B00B55778 /* Build configuration list for PBXNativeTarget "FirstTests" */ = {
+		41505CDC18F8E55B00B55778 /* Build configuration list for PBXNativeTarget "CubeJukeTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				41505CDD18F8E55B00B55778 /* Debug */,

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="6DK-mW-YFh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="6DK-mW-YFh">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -34,23 +34,23 @@
                                 <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" text="Dodge the Falling Cubes" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="f27-BX-pa3">
-                                <rect key="frame" x="65" y="144" width="190" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" text="Dodge the Approaching Cubes" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="f27-BX-pa3">
+                                <rect key="frame" x="20" y="144" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" misplaced="YES" text="Tap Here to Move Left" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="181" translatesAutoresizingMaskIntoConstraints="NO" id="guG-jP-0gk">
-                                <rect key="frame" x="0.0" y="116" width="181" height="452"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Tap Here to Move Left" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="160" translatesAutoresizingMaskIntoConstraints="NO" id="guG-jP-0gk">
+                                <rect key="frame" x="0.0" y="215" width="160" height="353"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tap Here to Move Right" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="181" translatesAutoresizingMaskIntoConstraints="NO" id="qJe-vO-GTq">
-                                <rect key="frame" x="181" y="116" width="181" height="452"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap Here to Move Right" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="160" translatesAutoresizingMaskIntoConstraints="NO" id="qJe-vO-GTq">
+                                <rect key="frame" x="160" y="215" width="160" height="353"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -70,6 +70,7 @@
                             <constraint firstItem="f27-BX-pa3" firstAttribute="top" secondItem="FRq-ba-UGK" secondAttribute="bottom" constant="8" symbolic="YES" id="7Cw-QZ-Duc"/>
                             <constraint firstItem="guG-jP-0gk" firstAttribute="height" secondItem="qJe-vO-GTq" secondAttribute="height" id="8KI-8t-w2v"/>
                             <constraint firstItem="Pej-PV-Td1" firstAttribute="top" secondItem="guG-jP-0gk" secondAttribute="bottom" id="BMt-Pa-vFW"/>
+                            <constraint firstItem="f27-BX-pa3" firstAttribute="leading" secondItem="y6v-mt-Awq" secondAttribute="leading" constant="20" symbolic="YES" id="E2G-Nm-5QA"/>
                             <constraint firstItem="FRq-ba-UGK" firstAttribute="top" secondItem="qGP-HY-4Cb" secondAttribute="bottom" constant="65" id="I4g-8p-gnO"/>
                             <constraint firstItem="guG-jP-0gk" firstAttribute="width" secondItem="qJe-vO-GTq" secondAttribute="width" id="JNi-vy-Vxf"/>
                             <constraint firstAttribute="trailing" secondItem="afP-sd-It5" secondAttribute="trailing" constant="20" symbolic="YES" id="JWL-WE-hbA"/>
@@ -85,6 +86,7 @@
                             <constraint firstItem="guG-jP-0gk" firstAttribute="bottom" secondItem="qJe-vO-GTq" secondAttribute="bottom" id="d61-QR-zc1"/>
                             <constraint firstItem="guG-jP-0gk" firstAttribute="top" secondItem="f27-BX-pa3" secondAttribute="bottom" constant="50" id="hW4-vT-fvn"/>
                             <constraint firstAttribute="trailing" secondItem="DXB-Gw-uNw" secondAttribute="trailing" id="sF5-wJ-M55"/>
+                            <constraint firstAttribute="trailing" secondItem="f27-BX-pa3" secondAttribute="trailing" constant="20" symbolic="YES" id="tCB-nb-yGL"/>
                         </constraints>
                     </view>
                     <connections>
@@ -137,12 +139,23 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GV0-ZU-WcG">
+                                <rect key="frame" x="40" y="213" width="240" height="142"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="142" id="Laj-hG-R24"/>
+                                    <constraint firstAttribute="width" constant="240" id="ulL-Y8-BM9"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="k53-1P-Gcf" secondAttribute="trailing" id="1ia-RQ-jNA"/>
                             <constraint firstItem="DHN-dJ-pGJ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="82f-SG-lOF"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="k53-1P-Gcf" secondAttribute="bottom" id="Kwp-K5-Hrt"/>
+                            <constraint firstAttribute="centerY" secondItem="GV0-ZU-WcG" secondAttribute="centerY" id="La7-k8-Uvt"/>
+                            <constraint firstAttribute="centerX" secondItem="GV0-ZU-WcG" secondAttribute="centerX" id="NWj-rH-Uhb"/>
                             <constraint firstItem="k53-1P-Gcf" firstAttribute="leading" secondItem="DHN-dJ-pGJ" secondAttribute="trailing" id="Ro9-JU-JiO"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="DHN-dJ-pGJ" secondAttribute="bottom" id="YUz-Qj-a68"/>
                             <constraint firstItem="DHN-dJ-pGJ" firstAttribute="width" secondItem="k53-1P-Gcf" secondAttribute="width" id="lVm-we-qdg"/>
@@ -152,6 +165,7 @@
                     </view>
                     <connections>
                         <outlet property="currentScoreLabel" destination="Hl3-11-0Q2" id="Edl-o6-VcG"/>
+                        <outlet property="gameOverView" destination="GV0-ZU-WcG" id="TBU-pp-n9R"/>
                         <outlet property="leftButton" destination="DHN-dJ-pGJ" id="PXs-ut-p7v"/>
                         <outlet property="rightButton" destination="k53-1P-Gcf" id="LSr-nn-tdH"/>
                     </connections>

@@ -42,11 +42,13 @@ bool l;
 @property (strong, nonatomic) NSMutableArray *holeArray;
 @property (strong, nonatomic) NSMutableArray *sectionsArray;
 
+// propery labels
 @property (weak, nonatomic) UILabel *rightInstructionLabel;
 @property (weak, nonatomic) UILabel *leftInstructionLabel;
 @property (weak, nonatomic) UILabel *topTitle;
 @property (weak, nonatomic) IBOutlet UILabel *currentScoreLabel;
 
+@property (weak, nonatomic) IBOutlet UIView *gameOverView;
 
 @end
 
@@ -189,7 +191,7 @@ bool l;
     
     // initialize timer controlling how fast to refresh screen
     [self.refreshTimer invalidate];
-    self.refreshTimer = [NSTimer scheduledTimerWithTimeInterval:0.006
+    self.refreshTimer = [NSTimer scheduledTimerWithTimeInterval:0.005
                                                        target:self
                                                      selector:@selector(tick:)
                                                      userInfo:nil
@@ -224,18 +226,14 @@ bool l;
 // on each tick check for collisions to end game
 - (void) tick:(NSTimeInterval)time {
     
-    //self.fieldView.frame=CGRectMake(0, self.fieldView.frame.origin.y+speed, self.fieldView.frame.size.width, self.fieldView.frame.size.height);
+    
     self.leftInstructionLabel.frame = CGRectMake(0, self.leftInstructionLabel.frame.origin.y+speed, self.leftInstructionLabel.frame.size.width, self.leftInstructionLabel.frame.size.height);
     
     self.rightInstructionLabel.frame = CGRectMake(self.view.bounds.size.width/2, self.rightInstructionLabel.frame.origin.y+speed, self.rightInstructionLabel.frame.size.width, self.rightInstructionLabel.frame.size.height);
     
-    score+=1;
+    score+=1; // increment user score on each tick
     self.currentScoreLabel.text = [NSString stringWithFormat:@"Score: %d", score];
 
-    /*if (self.leftInstructionLabel.frame.origin.y > self.view.bounds.size.height) {
-        [self.leftInstructionLabel removeFromSuperview];
-        [self.rightInstructionLabel removeFromSuperview];
-    }*/
     
     for (UIView *sect in self.sectionsArray) {
         sect.frame = CGRectMake(0, sect.frame.origin.y+speed, sect.frame.size.width, sect.frame.size.height);
@@ -246,14 +244,12 @@ bool l;
         [bottom removeFromSuperview];
         [self.sectionsArray removeObject: bottom];
         UIView* section = [self buildSection:sectionNum];
-        //section.backgroundColor = [UIColor blackColor];
         section.frame = CGRectMake(0, self.view.bounds.size.height-1500, section.frame.size.width, sectionHeight);
         [self.sectionsArray addObject:section];
         [self.view addSubview:section];
-        //[self.view sendSubviewToBack:section];
         [self.view bringSubviewToFront:self.rightButton];
         [self.view bringSubviewToFront:self.leftButton];
-        sectionNum++;
+        sectionNum++; // increment section count
     }
     
     UIView *sect = [self.sectionsArray firstObject];
@@ -261,43 +257,33 @@ bool l;
         if([self viewsDoCollide:block and: self.ballView]){
             speed = 0;
             [self gameOver];
-            //NSLog(@"%@", @"Collision");
         }
     }
     
-    
-   /* for(int i =0; i<50; i++){
-        UIView *v = self.holeArray[i];
-        NSLog(@"%f  %f\n",mapHeight- v.frame.origin.y, self.view.bounds.size.height);
-        if(mapHeight - v.frame.origin.y > self.view.bounds.size.height) {
-            [v removeFromSuperview];
-            [self.holeArray removeObject:v];
-            i--;
-        }
-        else if([self viewsDoCollide:v and: self.ballView]){
-            speed = 0;
-            [self gameOver];
-            
-        }
+    //move the ball
+    int newPos;
+    if (r == true){
+        newPos = self.ballView.center.x+2;
+        if(newPos<self.view.bounds.size.width-ballSize/2)
+            self.ballView.center=CGPointMake(newPos, self.ballView.center.y);
     }
-    */
-    /*for (UIView *v in self.holeArray) {
-            // check for collision between current array element view (obstacle) and ball
-            if([self viewsDoCollide:v and: self.ballView]){
-                speed = 0;
-                [self gameOver];
-                
-            }
-    }*/
+    else if (l == true){
+        newPos = self.ballView.center.x-2;
+        if(newPos>ballSize/2)
+            self.ballView.center=CGPointMake(newPos, self.ballView.center.y);
+    }
+    
 }
 
 
 // When the user lost, display score and allow for playing again
 - (void) gameOver {
+    self.gameOverView.hidden = NO;
+    [self.view bringSubviewToFront:self.gameOverView];
     
     //save the score
     
-    int hs = [[NSUserDefaults standardUserDefaults] integerForKey:@"highScore"];
+    int hs = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"highScore"];
     
     if(score>hs){
         [[NSUserDefaults standardUserDefaults] setInteger:score forKey:@"highScore"];
@@ -311,14 +297,15 @@ bool l;
     self.leftButton.enabled = NO;
     
     
-    //NSLog(@"Game Over! Score: %f", self.fieldView.frame.origin.y+mapHeight);
-    
     // create view for game over screen
-    UIView* gameOverView=[[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-120, self.view.frame.size.height/2-120, 240,240)];
+    //int w = 3 * self.view.frame.size.width / 4;
+    //int h = self.view.frame.size.height / 4;
+    
+   // UIView* gameOverView=[[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 - w/2, self.view.frame.size.height/2 - h/2, w, h)];
     
     // set game over view parameters
-    gameOverView.backgroundColor=[UIColor whiteColor];
-    [self.view addSubview:gameOverView];
+    self.gameOverView.backgroundColor=[UIColor whiteColor];
+  //  [self.view addSubview:gameOverView];
     
     
     
@@ -327,29 +314,29 @@ bool l;
     
     
     // display "game over" in a label
-    UILabel *gameOverLabel =  [[UILabel alloc] initWithFrame: CGRectMake(0,0,gameOverView.frame.size.width,gameOverView.frame.size.height/2)];
+    UILabel *gameOverLabel =  [[UILabel alloc] initWithFrame: CGRectMake(0,0,self.gameOverView.frame.size.width,self.gameOverView.frame.size.height/2)];
     
         // set gameover label parameters
     gameOverLabel.text = @"Game Over!"; //etc...
-    [gameOverView addSubview:gameOverLabel];
+    [self.gameOverView addSubview:gameOverLabel];
     gameOverLabel.textAlignment = NSTextAlignmentCenter;
-    [gameOverLabel setFont:[UIFont systemFontOfSize:30]];
+    [gameOverLabel setFont:[UIFont systemFontOfSize:28]];
 
     // display user score in a label
-    UILabel *scoreLabel = [[UILabel alloc] initWithFrame: CGRectMake(0,0,gameOverView.frame.size.width,gameOverView.frame.size.height)];
+    UILabel *scoreLabel = [[UILabel alloc] initWithFrame: CGRectMake(0,0,self.gameOverView.frame.size.width,self.gameOverView.frame.size.height)];
     
         // set score label parameters
     scoreLabel.text = [NSString stringWithFormat: @"Score: %d", score];
-    [gameOverView addSubview:scoreLabel];
+    [self.gameOverView addSubview:scoreLabel];
     scoreLabel.textAlignment = NSTextAlignmentCenter;
     [scoreLabel setFont:[UIFont systemFontOfSize:20]];
     
     // display prompt for user to play again
-    UILabel *playAgainLabel =  [[UILabel alloc] initWithFrame: CGRectMake(0,gameOverView.frame.size.height/2,gameOverView.frame.size.width,gameOverView.frame.size.height/2)];
+    UILabel *playAgainLabel =  [[UILabel alloc] initWithFrame: CGRectMake(0,self.gameOverView.frame.size.height/2,self.gameOverView.frame.size.width,self.gameOverView.frame.size.height/2)];
     
         // set play again label parameters
     playAgainLabel.text = @"Tap to Play Again";
-    [gameOverView addSubview:playAgainLabel];
+    [self.gameOverView addSubview:playAgainLabel];
     playAgainLabel.textAlignment = NSTextAlignmentCenter;
     [playAgainLabel setFont:[UIFont systemFontOfSize:20]];
     
@@ -362,8 +349,8 @@ bool l;
     
         // set play again button parameters
     [playAgain setTitle:@"" forState:UIControlStateNormal];
-    playAgain.frame=CGRectMake(0, 0, gameOverView.frame.size.width, gameOverView.frame.size.height);
-    [gameOverView addSubview:playAgain];
+    playAgain.frame=CGRectMake(0, 0, self.gameOverView.frame.size.width, self.gameOverView.frame.size.height);
+    [self.gameOverView addSubview:playAgain];
     [playAgain addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
 
 }
@@ -383,11 +370,6 @@ bool l;
 -(void)viewDidLoad {
     r = false;
     l = false;
-    self.ballMoveTimer =[NSTimer scheduledTimerWithTimeInterval:0.005
-                                     target:self
-                                   selector:@selector(moveBall:)
-                                   userInfo:nil
-                                    repeats:YES];
 }
 
 -(IBAction)theTouchDownRight {
