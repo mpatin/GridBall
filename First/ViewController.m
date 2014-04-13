@@ -48,6 +48,7 @@ bool l;
 @property (weak, nonatomic) UILabel *topTitle;
 @property (weak, nonatomic) IBOutlet UILabel *currentScoreLabel;
 
+@property (weak, nonatomic) IBOutlet UIView *gameOverView;
 
 @end
 
@@ -278,6 +279,8 @@ bool l;
 
 // When the user lost, display score and allow for playing again
 - (void) gameOver {
+    self.gameOverView.hidden = NO;
+    [self.view bringSubviewToFront:self.gameOverView];
     
     //save the score
     
@@ -296,14 +299,14 @@ bool l;
     
     
     // create view for game over screen
-    int w = 3 * self.view.frame.size.width / 4;
-    int h = self.view.frame.size.height / 4;
+    //int w = 3 * self.view.frame.size.width / 4;
+    //int h = self.view.frame.size.height / 4;
     
-    UIView* gameOverView=[[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 - w/2, self.view.frame.size.height/2 - h/2, w, h)];
+   // UIView* gameOverView=[[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 - w/2, self.view.frame.size.height/2 - h/2, w, h)];
     
     // set game over view parameters
-    gameOverView.backgroundColor=[UIColor whiteColor];
-    [self.view addSubview:gameOverView];
+    self.gameOverView.backgroundColor=[UIColor whiteColor];
+  //  [self.view addSubview:gameOverView];
     
     
     
@@ -312,29 +315,29 @@ bool l;
     
     
     // display "game over" in a label
-    UILabel *gameOverLabel =  [[UILabel alloc] initWithFrame: CGRectMake(0,0,gameOverView.frame.size.width,gameOverView.frame.size.height/2)];
+    UILabel *gameOverLabel =  [[UILabel alloc] initWithFrame: CGRectMake(0,0,self.gameOverView.frame.size.width,self.gameOverView.frame.size.height/2)];
     
         // set gameover label parameters
     gameOverLabel.text = @"Game Over!"; //etc...
-    [gameOverView addSubview:gameOverLabel];
+    [self.gameOverView addSubview:gameOverLabel];
     gameOverLabel.textAlignment = NSTextAlignmentCenter;
     [gameOverLabel setFont:[UIFont systemFontOfSize:28]];
 
     // display user score in a label
-    UILabel *scoreLabel = [[UILabel alloc] initWithFrame: CGRectMake(0,0,gameOverView.frame.size.width,gameOverView.frame.size.height)];
+    UILabel *scoreLabel = [[UILabel alloc] initWithFrame: CGRectMake(0,0,self.gameOverView.frame.size.width,self.gameOverView.frame.size.height)];
     
         // set score label parameters
     scoreLabel.text = [NSString stringWithFormat: @"Score: %d", score];
-    [gameOverView addSubview:scoreLabel];
+    [self.gameOverView addSubview:scoreLabel];
     scoreLabel.textAlignment = NSTextAlignmentCenter;
     [scoreLabel setFont:[UIFont systemFontOfSize:20]];
     
     // display prompt for user to play again
-    UILabel *playAgainLabel =  [[UILabel alloc] initWithFrame: CGRectMake(0,gameOverView.frame.size.height/2,gameOverView.frame.size.width,gameOverView.frame.size.height/2)];
+    UILabel *playAgainLabel =  [[UILabel alloc] initWithFrame: CGRectMake(0,self.gameOverView.frame.size.height/2,self.gameOverView.frame.size.width,self.gameOverView.frame.size.height/2)];
     
         // set play again label parameters
     playAgainLabel.text = @"Tap to Play Again";
-    [gameOverView addSubview:playAgainLabel];
+    [self.gameOverView addSubview:playAgainLabel];
     playAgainLabel.textAlignment = NSTextAlignmentCenter;
     [playAgainLabel setFont:[UIFont systemFontOfSize:20]];
     
@@ -347,8 +350,8 @@ bool l;
     
         // set play again button parameters
     [playAgain setTitle:@"" forState:UIControlStateNormal];
-    playAgain.frame=CGRectMake(0, 0, gameOverView.frame.size.width, gameOverView.frame.size.height);
-    [gameOverView addSubview:playAgain];
+    playAgain.frame=CGRectMake(0, 0, self.gameOverView.frame.size.width, self.gameOverView.frame.size.height);
+    [self.gameOverView addSubview:playAgain];
     [playAgain addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
 
 }

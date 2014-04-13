@@ -41,16 +41,16 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" misplaced="YES" text="Tap Here to Move Left" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="181" translatesAutoresizingMaskIntoConstraints="NO" id="guG-jP-0gk">
-                                <rect key="frame" x="0.0" y="116" width="181" height="452"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Tap Here to Move Left" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="160" translatesAutoresizingMaskIntoConstraints="NO" id="guG-jP-0gk">
+                                <rect key="frame" x="0.0" y="215" width="160" height="353"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tap Here to Move Right" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="181" translatesAutoresizingMaskIntoConstraints="NO" id="qJe-vO-GTq">
-                                <rect key="frame" x="181" y="116" width="181" height="452"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap Here to Move Right" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="160" translatesAutoresizingMaskIntoConstraints="NO" id="qJe-vO-GTq">
+                                <rect key="frame" x="160" y="215" width="160" height="353"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -139,12 +139,23 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GV0-ZU-WcG">
+                                <rect key="frame" x="40" y="213" width="240" height="142"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="142" id="Laj-hG-R24"/>
+                                    <constraint firstAttribute="width" constant="240" id="ulL-Y8-BM9"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="k53-1P-Gcf" secondAttribute="trailing" id="1ia-RQ-jNA"/>
                             <constraint firstItem="DHN-dJ-pGJ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="82f-SG-lOF"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="k53-1P-Gcf" secondAttribute="bottom" id="Kwp-K5-Hrt"/>
+                            <constraint firstAttribute="centerY" secondItem="GV0-ZU-WcG" secondAttribute="centerY" id="La7-k8-Uvt"/>
+                            <constraint firstAttribute="centerX" secondItem="GV0-ZU-WcG" secondAttribute="centerX" id="NWj-rH-Uhb"/>
                             <constraint firstItem="k53-1P-Gcf" firstAttribute="leading" secondItem="DHN-dJ-pGJ" secondAttribute="trailing" id="Ro9-JU-JiO"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="DHN-dJ-pGJ" secondAttribute="bottom" id="YUz-Qj-a68"/>
                             <constraint firstItem="DHN-dJ-pGJ" firstAttribute="width" secondItem="k53-1P-Gcf" secondAttribute="width" id="lVm-we-qdg"/>
@@ -154,6 +165,7 @@
                     </view>
                     <connections>
                         <outlet property="currentScoreLabel" destination="Hl3-11-0Q2" id="Edl-o6-VcG"/>
+                        <outlet property="gameOverView" destination="GV0-ZU-WcG" id="TBU-pp-n9R"/>
                         <outlet property="leftButton" destination="DHN-dJ-pGJ" id="PXs-ut-p7v"/>
                         <outlet property="rightButton" destination="k53-1P-Gcf" id="LSr-nn-tdH"/>
                     </connections>
