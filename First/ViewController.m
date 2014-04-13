@@ -189,7 +189,7 @@ bool l;
     
     // initialize timer controlling how fast to refresh screen
     [self.refreshTimer invalidate];
-    self.refreshTimer = [NSTimer scheduledTimerWithTimeInterval:0.006
+    self.refreshTimer = [NSTimer scheduledTimerWithTimeInterval:0.005
                                                        target:self
                                                      selector:@selector(tick:)
                                                      userInfo:nil
@@ -264,6 +264,19 @@ bool l;
             [self gameOver];
             //NSLog(@"%@", @"Collision");
         }
+    }
+    
+    //move the ball
+    int newPos;
+    if (r == true){
+        newPos = self.ballView.center.x+2;
+        if(newPos<self.view.bounds.size.width-ballSize/2)
+            self.ballView.center=CGPointMake(newPos, self.ballView.center.y);
+    }
+    else if (l == true){
+        newPos = self.ballView.center.x-2;
+        if(newPos>ballSize/2)
+            self.ballView.center=CGPointMake(newPos, self.ballView.center.y);
     }
     
     
@@ -384,35 +397,41 @@ bool l;
 -(void)viewDidLoad {
     r = false;
     l = false;
-    self.ballMoveTimer =[NSTimer scheduledTimerWithTimeInterval:0.005
+    /*self.ballMoveTimer =[NSTimer scheduledTimerWithTimeInterval:0.005
                                      target:self
                                    selector:@selector(moveBall:)
                                    userInfo:nil
-                                    repeats:YES];
+                                    repeats:YES];*/
 }
 
 -(IBAction)theTouchDownRight {
     r = true;
+    //speed=2;
 }
 
 -(IBAction)theTouchUpInsideRight {
     r = false;
+    //speed=2;
 }
 
 -(IBAction)theTouchUpOutsideRight {
     r = false;
+    //speed=2;
 }
 
 -(IBAction)theTouchDownLeft {
     l = true;
+    //speed=2;
 }
 
 -(IBAction)theTouchUpInsideLeft {
     l = false;
+    //speed=2;
 }
 
 -(IBAction)theTouchUpOutsideLeft {
     l = false;
+    //speed=2;
 }
 
 
