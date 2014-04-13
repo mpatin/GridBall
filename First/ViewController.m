@@ -226,11 +226,10 @@ bool l;
 // on each tick check for collisions to end game
 - (void) tick:(NSTimeInterval)time {
     
-    if(self.leftInstructionLabel.frame.origin.y<self.view.frame.size.height){
-        self.leftInstructionLabel.frame = CGRectMake(0, self.leftInstructionLabel.frame.origin.y+speed, self.leftInstructionLabel.frame.size.width, self.leftInstructionLabel.frame.size.height);
+    self.leftInstructionLabel.frame = CGRectMake(0, self.leftInstructionLabel.frame.origin.y+speed, self.leftInstructionLabel.frame.size.width, self.leftInstructionLabel.frame.size.height);
     
-        self.rightInstructionLabel.frame = CGRectMake(self.view.bounds.size.width/2, self.rightInstructionLabel.frame.origin.y+speed, self.rightInstructionLabel.frame.size.width, self.rightInstructionLabel.frame.size.height);
-    }
+    self.rightInstructionLabel.frame = CGRectMake(self.view.bounds.size.width/2, self.rightInstructionLabel.frame.origin.y+speed, self.rightInstructionLabel.frame.size.width, self.rightInstructionLabel.frame.size.height);
+    
     score+=1; // increment user score on each tick
     self.currentScoreLabel.text = [NSString stringWithFormat:@"Score: %d", score];
 
