@@ -43,7 +43,7 @@ bool l;
 
 @property (weak, nonatomic) UILabel *rightInstructionLabel;
 @property (weak, nonatomic) UILabel *leftInstructionLabel;
-
+@property (weak, nonatomic) UILabel *topTitle;
 
 
 @end
@@ -83,24 +83,34 @@ bool l;
                        
     // create instructions labels
     // ----------------------------------------------------------------------------------------
-    UILabel *instructionsLabelLeft =  [[UILabel alloc] initWithFrame: CGRectMake(0,mapHeight-self.view.frame.size.height,self.view.frame.size.width/2,self.view.frame.size.height)];
+    UILabel *instructionsLabelLeft =  [[UILabel alloc] initWithFrame: CGRectMake(0,mapHeight-self.view.frame.size.height+100,self.view.frame.size.width/2,self.view.frame.size.height)];
                        
         // set left label parameters
-    instructionsLabelLeft.text = @"Tap to Move Left";
+    instructionsLabelLeft.text = @"Tap Here to Move Left";
     [self.fieldView addSubview:instructionsLabelLeft];
     [[instructionsLabelLeft layer] setBackgroundColor: [[UIColor redColor] CGColor]];
-    instructionsLabelLeft.numberOfLines = 0;
+    instructionsLabelLeft.numberOfLines = 2;
     instructionsLabelLeft.textAlignment = NSTextAlignmentCenter;
     self.leftInstructionLabel = instructionsLabelLeft;
     
-    UILabel *instructionsLabelRight =  [[UILabel alloc] initWithFrame: CGRectMake(self.view.frame.size.width/2,mapHeight-self.view.frame.size.height,self.view.frame.size.width/2,self.view.frame.size.height)];
+    UILabel *instructionsLabelRight =  [[UILabel alloc] initWithFrame: CGRectMake(self.view.frame.size.width/2,mapHeight-self.view.frame.size.height+100,self.view.frame.size.width/2,self.view.frame.size.height)];
                        
         // set left label parameters
-    instructionsLabelRight.text = @"Tap to Move Right";
+    instructionsLabelRight.text = @"Tap Here to Move Right";
     [self.fieldView addSubview:instructionsLabelRight];
+    instructionsLabelRight.numberOfLines = 2;
     [[instructionsLabelRight layer] setBackgroundColor: [[UIColor yellowColor] CGColor]];
     instructionsLabelRight.textAlignment = NSTextAlignmentCenter;
     self.rightInstructionLabel = instructionsLabelRight;
+    
+    UILabel *topTitle =  [[UILabel alloc] initWithFrame: CGRectMake(0,0,self.view.frame.size.width,100)];
+    
+    // set left label parameters
+    topTitle.text = @"Cube Juke";
+    [self.fieldView addSubview:topTitle];
+    [[topTitle layer] setBackgroundColor: [[UIColor greenColor] CGColor]];
+    topTitle.textAlignment = NSTextAlignmentCenter;
+    self.topTitle = topTitle;
     
     // ----------------------------------------------------------------------------------------
 
@@ -211,13 +221,13 @@ bool l;
     //self.fieldView.frame=CGRectMake(0, self.fieldView.frame.origin.y+speed, self.fieldView.frame.size.width, self.fieldView.frame.size.height);
     self.leftInstructionLabel.frame = CGRectMake(0, self.leftInstructionLabel.frame.origin.y+speed, self.leftInstructionLabel.frame.size.width, self.leftInstructionLabel.frame.size.height);
     
-    //if (self.leftInstructionLabel.frame.origin.y > self.view.bounds.size.height) {
-        //[self.leftInstructionLabel removeFromSuperview];
-        //[self.rightInstructionLabel removeFromSuperview];
-    //}
-    
     self.rightInstructionLabel.frame = CGRectMake(self.view.bounds.size.width/2, self.rightInstructionLabel.frame.origin.y+speed, self.rightInstructionLabel.frame.size.width, self.rightInstructionLabel.frame.size.height);
 
+    /*if (self.leftInstructionLabel.frame.origin.y > self.view.bounds.size.height) {
+        [self.leftInstructionLabel removeFromSuperview];
+        [self.rightInstructionLabel removeFromSuperview];
+    }*/
+    
     for (UIView *sect in self.sectionsArray) {
         sect.frame = CGRectMake(0, sect.frame.origin.y+speed, sect.frame.size.width, sect.frame.size.height);
     }
@@ -344,7 +354,7 @@ bool l;
 // go back to main menu
 -(void)goBack
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 
