@@ -103,8 +103,8 @@
                                     <action selector="theTouchUpOutsideRight" destination="vXZ-lx-hvc" eventType="touchUpOutside" id="7WR-S4-G4S"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DHN-dJ-pGJ">
-                                <rect key="frame" x="0.0" y="20" width="160" height="548"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DHN-dJ-pGJ">
+                                <rect key="frame" x="-71" y="44" width="160" height="548"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <state key="normal">
@@ -116,6 +116,12 @@
                                     <action selector="theTouchUpOutsideLeft" destination="vXZ-lx-hvc" eventType="touchUpOutside" id="QIX-1c-mLi"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hl3-11-0Q2">
+                                <rect key="frame" x="20" y="15" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -130,13 +136,14 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="currentScoreLabel" destination="Hl3-11-0Q2" id="Edl-o6-VcG"/>
                         <outlet property="leftButton" destination="DHN-dJ-pGJ" id="PXs-ut-p7v"/>
                         <outlet property="rightButton" destination="k53-1P-Gcf" id="LSr-nn-tdH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-261" y="207"/>
+            <point key="canvasLocation" x="-203" y="216"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

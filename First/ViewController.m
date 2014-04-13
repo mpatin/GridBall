@@ -45,6 +45,7 @@ bool l;
 @property (weak, nonatomic) UILabel *rightInstructionLabel;
 @property (weak, nonatomic) UILabel *leftInstructionLabel;
 @property (weak, nonatomic) UILabel *topTitle;
+@property (weak, nonatomic) IBOutlet UILabel *currentScoreLabel;
 
 
 @end
@@ -52,6 +53,9 @@ bool l;
 
 @implementation ViewController
 
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
 
 // array initializer to be able to reference and add objects
 - (NSMutableArray *)holeArray {
@@ -226,6 +230,7 @@ bool l;
     self.rightInstructionLabel.frame = CGRectMake(self.view.bounds.size.width/2, self.rightInstructionLabel.frame.origin.y+speed, self.rightInstructionLabel.frame.size.width, self.rightInstructionLabel.frame.size.height);
     
     score+=1;
+    self.currentScoreLabel.text = [NSString stringWithFormat:@"Score: %d", score];
 
     /*if (self.leftInstructionLabel.frame.origin.y > self.view.bounds.size.height) {
         [self.leftInstructionLabel removeFromSuperview];
