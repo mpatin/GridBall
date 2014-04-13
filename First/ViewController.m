@@ -15,7 +15,8 @@ int bufferHeight = 200;
 int sectionHeight = 500;
 int holeSize = 20;
 int ballSize = 25;
-int speed = 2;
+int speed = 1;
+int score = 0;
 int sectionNum = 1;
 
 bool r;
@@ -83,7 +84,7 @@ bool l;
                        
     // create instructions labels
     // ----------------------------------------------------------------------------------------
-    UILabel *instructionsLabelLeft =  [[UILabel alloc] initWithFrame: CGRectMake(0,mapHeight-self.view.frame.size.height+100,self.view.frame.size.width/2,self.view.frame.size.height)];
+    UILabel *instructionsLabelLeft =  [[UILabel alloc] initWithFrame: CGRectMake(0,mapHeight-self.view.frame.size.height+225,self.view.frame.size.width/2,self.view.frame.size.height-225)];
                        
         // set left label parameters
     instructionsLabelLeft.text = @"Tap Here to Move Left";
@@ -93,7 +94,7 @@ bool l;
     instructionsLabelLeft.textAlignment = NSTextAlignmentCenter;
     self.leftInstructionLabel = instructionsLabelLeft;
     
-    UILabel *instructionsLabelRight =  [[UILabel alloc] initWithFrame: CGRectMake(self.view.frame.size.width/2,mapHeight-self.view.frame.size.height+100,self.view.frame.size.width/2,self.view.frame.size.height)];
+    UILabel *instructionsLabelRight =  [[UILabel alloc] initWithFrame: CGRectMake(self.view.frame.size.width/2,mapHeight-self.view.frame.size.height+225,self.view.frame.size.width/2,self.view.frame.size.height-225)];
                        
         // set left label parameters
     instructionsLabelRight.text = @"Tap Here to Move Right";
@@ -165,6 +166,7 @@ bool l;
 // when game first begins
 - (void) startGame {
     
+    score=0;
     speed=2; // initialize speed of falling squares
     
     self.sectionsArray = [NSMutableArray array];
@@ -222,6 +224,8 @@ bool l;
     self.leftInstructionLabel.frame = CGRectMake(0, self.leftInstructionLabel.frame.origin.y+speed, self.leftInstructionLabel.frame.size.width, self.leftInstructionLabel.frame.size.height);
     
     self.rightInstructionLabel.frame = CGRectMake(self.view.bounds.size.width/2, self.rightInstructionLabel.frame.origin.y+speed, self.rightInstructionLabel.frame.size.width, self.rightInstructionLabel.frame.size.height);
+    
+    score+=1;
 
     /*if (self.leftInstructionLabel.frame.origin.y > self.view.bounds.size.height) {
         [self.leftInstructionLabel removeFromSuperview];
@@ -300,7 +304,7 @@ bool l;
     UIView* gameOverView=[[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-120, self.view.frame.size.height/2-120, 240,240)];
     
     // set game over view parameters
-    gameOverView.backgroundColor=[UIColor redColor];
+    gameOverView.backgroundColor=[UIColor orangeColor];
     [self.view addSubview:gameOverView];
     
     
@@ -322,7 +326,7 @@ bool l;
     UILabel *scoreLabel = [[UILabel alloc] initWithFrame: CGRectMake(0,0,gameOverView.frame.size.width,gameOverView.frame.size.height)];
     
         // set score label parameters
-    scoreLabel.text = [NSString stringWithFormat: @"Score: %d", (int)self.fieldView.frame.origin.y+mapHeight-bufferHeight];
+    scoreLabel.text = [NSString stringWithFormat: @"Score: %d", score];
     [gameOverView addSubview:scoreLabel];
     scoreLabel.textAlignment = NSTextAlignmentCenter;
     [scoreLabel setFont:[UIFont systemFontOfSize:20]];
