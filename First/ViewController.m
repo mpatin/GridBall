@@ -16,8 +16,8 @@ int sectionHeight = 500;
 int holeSize = 20;
 int ballSize = 25;
 int speed = 2;
+int sectionNum = 1;
 
-NSTimer * timer;
 bool r;
 bool l;
 
@@ -25,11 +25,11 @@ bool l;
 
 // propery views
 @property (nonatomic, weak) UIView* fieldView;
+@property (nonatomic, weak) UIView* sectionView;
 @property (nonatomic, weak) UIView* ballView;
 
 // property timers
-@property (nonatomic, strong) NSTimer * timer;
-@property (nonatomic, strong) NSTimer * refreshTimer;
+@property (nonatomic, strong) NSTimer *refreshTimer;
 @property (strong, nonatomic) NSTimer *ballMoveTimer;
 
 // property buttons
@@ -39,6 +39,11 @@ bool l;
 
 // property array to store view obstacles
 @property (strong, nonatomic) NSMutableArray *holeArray;
+@property (strong, nonatomic) NSMutableArray *sectionsArray;
+
+@property (weak, nonatomic) UILabel *rightInstructionLabel;
+@property (weak, nonatomic) UILabel *leftInstructionLabel;
+
 
 
 @end
@@ -86,7 +91,7 @@ bool l;
     [[instructionsLabelLeft layer] setBackgroundColor: [[UIColor redColor] CGColor]];
     instructionsLabelLeft.numberOfLines = 0;
     instructionsLabelLeft.textAlignment = NSTextAlignmentCenter;
-    
+    self.leftInstructionLabel = instructionsLabelLeft;
     
     UILabel *instructionsLabelRight =  [[UILabel alloc] initWithFrame: CGRectMake(self.view.frame.size.width/2,mapHeight-self.view.frame.size.height,self.view.frame.size.width/2,self.view.frame.size.height)];
                        
@@ -95,12 +100,14 @@ bool l;
     [self.fieldView addSubview:instructionsLabelRight];
     [[instructionsLabelRight layer] setBackgroundColor: [[UIColor yellowColor] CGColor]];
     instructionsLabelRight.textAlignment = NSTextAlignmentCenter;
+    self.rightInstructionLabel = instructionsLabelRight;
     
     // ----------------------------------------------------------------------------------------
 
 
     // place obstacles on field
-    for(int n=1; n<=((mapHeight-bufferHeight)/sectionHeight); n++){
+    //for(int n=1; n<=((mapHeight-bufferHeight)/sectionHeight); n++){
+    for(int n=1; n<=5; n++){
         [self buildSection: n ];
     }
     
@@ -116,10 +123,48 @@ bool l;
     self.ballView.layer.zPosition = 1;
 }
 
+
+// method to place obstacle views in field section
+- (UIView*) buildSection: (int) n {
+    UIView* sectionView=[[UIView alloc] initWithFrame:CGRectMake(0, 0,self.view.bounds.size.width, sectionHeight)];
+    double v = ceil(log1p(n))*5;
+    
+    // place number of obstacles for inputted section number based on natural log function
+    for (int p=0; p < (int) v; p++){
+        int y =  arc4random() % (sectionHeight-holeSize);
+        int x = arc4random() % (int)(self.view.bounds.size.width - holeSize);
+        [self addHole: sectionView on: x and: y];
+    }
+    //sectionView.backgroundColor = [UIColor blackColor];
+    return sectionView;
+}
+
+// method to add hole in section
+- (void) addHole: (UIView *) currentView
+              on:(int) x
+             and:(int) y
+{
+    // create new hole
+    UIView* hole1=[[UIView alloc] initWithFrame:CGRectMake(x, y, holeSize, holeSize)];
+    
+    // set hole parameters
+    hole1.backgroundColor=[UIColor blackColor];
+    [currentView addSubview:hole1];
+}
+
 // when game first begins
 - (void) startGame {
     
     speed=2; // initialize speed of falling squares
+    
+    self.sectionsArray = [NSMutableArray array];
+    for (sectionNum =1; sectionNum<4; sectionNum++) {
+        UIView* section = [self buildSection:sectionNum];
+        section.frame = CGRectMake(0, -sectionNum*sectionHeight, section.frame.size.width, sectionHeight);
+        [self.sectionsArray addObject:section];
+        [self.view addSubview:section];
+        [self.view sendSubviewToBack:section];
+    }
     
     // enable and disable appropriate buttons
     self.rightButton.enabled = YES;
@@ -140,7 +185,8 @@ bool l;
 - (bool) viewsDoCollide:(UIView *)view1 and:(UIView *)view2{
     
     // put rectangle around user ball for edge detection
-    CGRect ballRect = CGRectMake(view1.frame.origin.x, view1.frame.origin.y+self.fieldView.frame.origin.y, view1.frame.size.width, view1.frame.size.height);
+    UIView *sect = [self.sectionsArray firstObject];
+    CGRect ballRect = CGRectMake(view1.frame.origin.x, view1.frame.origin.y+sect.frame.origin.y, view1.frame.size.width, view1.frame.size.height);
     
     // call detection method
     if(CGRectIntersectsRect(ballRect, view2.frame))
@@ -159,48 +205,74 @@ bool l;
     return 0;
 }
 
-// method to place obstacle views in field section
-- (void) buildSection: (int) n {
-    double v = ceil(log1p(n))*5;
-    
-    // place number of obstacles for inputted section number based on natural log function
-    for (int p=0; p< (int) v; p++){
-        int y = (mapHeight-bufferHeight-self.view.frame.size.height) - (arc4random() % (sectionHeight-holeSize) + (n-1)*sectionHeight + holeSize);
-        int x = arc4random() % (int) (self.fieldView.frame.size.width-holeSize);
-        [self addHole:x and: y];
-        
-       
-        
-    }
-}
-
-// method to add hole in section
-- (void) addHole:(int) x
-             and:(int) y
-{
-    // create new hole
-    UIView* hole1=[[UIView alloc] initWithFrame:CGRectMake(x, y, holeSize, holeSize)];
-    
-    // set hole parameters
-    hole1.backgroundColor=[UIColor blackColor];
-    [self.fieldView addSubview:hole1];
-    [self.holeArray addObject:hole1];
-}
-
 // on each tick check for collisions to end game
 - (void) tick:(NSTimeInterval)time {
     
-    self.fieldView.frame=CGRectMake(0, self.fieldView.frame.origin.y+speed, self.fieldView.frame.size.width, self.fieldView.frame.size.height);
+    //self.fieldView.frame=CGRectMake(0, self.fieldView.frame.origin.y+speed, self.fieldView.frame.size.width, self.fieldView.frame.size.height);
+    self.leftInstructionLabel.frame = CGRectMake(0, self.leftInstructionLabel.frame.origin.y+speed, self.leftInstructionLabel.frame.size.width, self.leftInstructionLabel.frame.size.height);
+    
+    //if (self.leftInstructionLabel.frame.origin.y > self.view.bounds.size.height) {
+        //[self.leftInstructionLabel removeFromSuperview];
+        //[self.rightInstructionLabel removeFromSuperview];
+    //}
+    
+    self.rightInstructionLabel.frame = CGRectMake(self.view.bounds.size.width/2, self.rightInstructionLabel.frame.origin.y+speed, self.rightInstructionLabel.frame.size.width, self.rightInstructionLabel.frame.size.height);
 
-    for (UIView *v in self.holeArray) {
+    for (UIView *sect in self.sectionsArray) {
+        sect.frame = CGRectMake(0, sect.frame.origin.y+speed, sect.frame.size.width, sect.frame.size.height);
+    }
+    
+    UIView *bottom = [self.sectionsArray firstObject];
+    if(bottom.frame.origin.y>self.view.bounds.size.height){
+        [bottom removeFromSuperview];
+        [self.sectionsArray removeObject: bottom];
+        NSLog(@"%@", @"Deleted");
+        UIView* section = [self buildSection:sectionNum];
+        //section.backgroundColor = [UIColor blackColor];
+        section.frame = CGRectMake(0, self.view.bounds.size.height-1500, section.frame.size.width, sectionHeight);
+        [self.sectionsArray addObject:section];
+        [self.view addSubview:section];
+        //[self.view sendSubviewToBack:section];
+        [self.view bringSubviewToFront:self.rightButton];
+        [self.view bringSubviewToFront:self.leftButton];
+        sectionNum++;
+    }
+    
+    UIView *sect = [self.sectionsArray firstObject];
+    for (UIView *block in sect.subviews) {
+        if([self viewsDoCollide:block and: self.ballView]){
+            speed = 0;
+            [self gameOver];
+            //NSLog(@"%@", @"Collision");
+        }
+    }
+    
+    
+   /* for(int i =0; i<50; i++){
+        UIView *v = self.holeArray[i];
+        NSLog(@"%f  %f\n",mapHeight- v.frame.origin.y, self.view.bounds.size.height);
+        if(mapHeight - v.frame.origin.y > self.view.bounds.size.height) {
+            [v removeFromSuperview];
+            [self.holeArray removeObject:v];
+            i--;
+        }
+        else if([self viewsDoCollide:v and: self.ballView]){
+            speed = 0;
+            [self gameOver];
+            
+        }
+    }
+    */
+    /*for (UIView *v in self.holeArray) {
             // check for collision between current array element view (obstacle) and ball
             if([self viewsDoCollide:v and: self.ballView]){
                 speed = 0;
                 [self gameOver];
                 
             }
-    }
+    }*/
 }
+
 
 // When the user lost, display score and allow for playing again
 - (void) gameOver {
@@ -279,9 +351,6 @@ bool l;
 
 
 // FUNCTIONS TO MOVE THE USER BALL
-
-
-@synthesize timer;
 
 // initialize ball move timer
 -(void)viewDidLoad {
