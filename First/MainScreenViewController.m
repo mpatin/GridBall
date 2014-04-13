@@ -31,7 +31,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    int hs = [[NSUserDefaults standardUserDefaults] integerForKey:@"highScore"];
+    int hs = (int) [[NSUserDefaults standardUserDefaults] integerForKey:@"highScore"];
     
     self.highScoreLabel.text = [NSString stringWithFormat:@"High Score: %d", hs];
 }
