@@ -42,6 +42,7 @@ bool l;
 @property (strong, nonatomic) NSMutableArray *holeArray;
 @property (strong, nonatomic) NSMutableArray *sectionsArray;
 
+// propery labels
 @property (weak, nonatomic) UILabel *rightInstructionLabel;
 @property (weak, nonatomic) UILabel *leftInstructionLabel;
 @property (weak, nonatomic) UILabel *topTitle;
@@ -224,18 +225,14 @@ bool l;
 // on each tick check for collisions to end game
 - (void) tick:(NSTimeInterval)time {
     
-    //self.fieldView.frame=CGRectMake(0, self.fieldView.frame.origin.y+speed, self.fieldView.frame.size.width, self.fieldView.frame.size.height);
+    
     self.leftInstructionLabel.frame = CGRectMake(0, self.leftInstructionLabel.frame.origin.y+speed, self.leftInstructionLabel.frame.size.width, self.leftInstructionLabel.frame.size.height);
     
     self.rightInstructionLabel.frame = CGRectMake(self.view.bounds.size.width/2, self.rightInstructionLabel.frame.origin.y+speed, self.rightInstructionLabel.frame.size.width, self.rightInstructionLabel.frame.size.height);
     
-    score+=1;
+    score+=1; // increment user score on each tick
     self.currentScoreLabel.text = [NSString stringWithFormat:@"Score: %d", score];
 
-    /*if (self.leftInstructionLabel.frame.origin.y > self.view.bounds.size.height) {
-        [self.leftInstructionLabel removeFromSuperview];
-        [self.rightInstructionLabel removeFromSuperview];
-    }*/
     
     for (UIView *sect in self.sectionsArray) {
         sect.frame = CGRectMake(0, sect.frame.origin.y+speed, sect.frame.size.width, sect.frame.size.height);
@@ -247,14 +244,12 @@ bool l;
         [self.sectionsArray removeObject: bottom];
         NSLog(@"%@", @"Deleted");
         UIView* section = [self buildSection:sectionNum];
-        //section.backgroundColor = [UIColor blackColor];
         section.frame = CGRectMake(0, self.view.bounds.size.height-1500, section.frame.size.width, sectionHeight);
         [self.sectionsArray addObject:section];
         [self.view addSubview:section];
-        //[self.view sendSubviewToBack:section];
         [self.view bringSubviewToFront:self.rightButton];
         [self.view bringSubviewToFront:self.leftButton];
-        sectionNum++;
+        sectionNum++; // increment section count
     }
     
     UIView *sect = [self.sectionsArray firstObject];
@@ -262,7 +257,6 @@ bool l;
         if([self viewsDoCollide:block and: self.ballView]){
             speed = 0;
             [self gameOver];
-            //NSLog(@"%@", @"Collision");
         }
     }
     
@@ -279,30 +273,6 @@ bool l;
             self.ballView.center=CGPointMake(newPos, self.ballView.center.y);
     }
     
-    
-   /* for(int i =0; i<50; i++){
-        UIView *v = self.holeArray[i];
-        NSLog(@"%f  %f\n",mapHeight- v.frame.origin.y, self.view.bounds.size.height);
-        if(mapHeight - v.frame.origin.y > self.view.bounds.size.height) {
-            [v removeFromSuperview];
-            [self.holeArray removeObject:v];
-            i--;
-        }
-        else if([self viewsDoCollide:v and: self.ballView]){
-            speed = 0;
-            [self gameOver];
-            
-        }
-    }
-    */
-    /*for (UIView *v in self.holeArray) {
-            // check for collision between current array element view (obstacle) and ball
-            if([self viewsDoCollide:v and: self.ballView]){
-                speed = 0;
-                [self gameOver];
-                
-            }
-    }*/
 }
 
 
@@ -311,7 +281,7 @@ bool l;
     
     //save the score
     
-    int hs = [[NSUserDefaults standardUserDefaults] integerForKey:@"highScore"];
+    int hs = (int)[[NSUserDefaults standardUserDefaults] integerForKey:@"highScore"];
     
     if(score>hs){
         [[NSUserDefaults standardUserDefaults] setInteger:score forKey:@"highScore"];
@@ -324,8 +294,6 @@ bool l;
     self.rightButton.enabled = NO;
     self.leftButton.enabled = NO;
     
-    
-    //NSLog(@"Game Over! Score: %f", self.fieldView.frame.origin.y+mapHeight);
     
     // create view for game over screen
     UIView* gameOverView=[[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-120, self.view.frame.size.height/2-120, 240,240)];
@@ -397,41 +365,30 @@ bool l;
 -(void)viewDidLoad {
     r = false;
     l = false;
-    /*self.ballMoveTimer =[NSTimer scheduledTimerWithTimeInterval:0.005
-                                     target:self
-                                   selector:@selector(moveBall:)
-                                   userInfo:nil
-                                    repeats:YES];*/
 }
 
 -(IBAction)theTouchDownRight {
     r = true;
-    //speed=2;
 }
 
 -(IBAction)theTouchUpInsideRight {
     r = false;
-    //speed=2;
 }
 
 -(IBAction)theTouchUpOutsideRight {
     r = false;
-    //speed=2;
 }
 
 -(IBAction)theTouchDownLeft {
     l = true;
-    //speed=2;
 }
 
 -(IBAction)theTouchUpInsideLeft {
     l = false;
-    //speed=2;
 }
 
 -(IBAction)theTouchUpOutsideLeft {
     l = false;
-    //speed=2;
 }
 
 
