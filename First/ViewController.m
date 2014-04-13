@@ -15,7 +15,7 @@ int bufferHeight = 200;
 int sectionHeight = 500;
 int holeSize = 20;
 int ballSize = 25;
-int speed = 1;
+int speed = 2;
 int score = 0;
 int sectionNum = 1;
 
