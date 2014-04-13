@@ -81,30 +81,30 @@ bool l;
     // initialize view that squares are drawn on top of
     UIView* fieldView=[[UIView alloc] initWithFrame:CGRectMake(0, -mapHeight+self.view.frame.size.height, self.view.frame.size.width, mapHeight)];
                     
-    self.view.backgroundColor=[UIColor greenColor];  // set background color
+    self.view.backgroundColor=[UIColor blackColor];  // set background color
     [self.view addSubview:fieldView];                // make a sub view of super view
     self.fieldView = fieldView;                      // define property
     [self.view sendSubviewToBack:fieldView];         // send below buttons
                        
     // create instructions labels
     // ----------------------------------------------------------------------------------------
-    UILabel *instructionsLabelLeft =  [[UILabel alloc] initWithFrame: CGRectMake(0,mapHeight-self.view.frame.size.height+225,self.view.frame.size.width/2,self.view.frame.size.height-225)];
+    UILabel *instructionsLabelLeft =  [[UILabel alloc] initWithFrame: CGRectMake(0,mapHeight-self.view.frame.size.height+215,self.view.frame.size.width/2,self.view.frame.size.height-225)];
                        
         // set left label parameters
     instructionsLabelLeft.text = @"Tap Here to Move Left";
     [self.fieldView addSubview:instructionsLabelLeft];
-    [[instructionsLabelLeft layer] setBackgroundColor: [[UIColor redColor] CGColor]];
+    [[instructionsLabelLeft layer] setBackgroundColor: [[UIColor whiteColor] CGColor]];
     instructionsLabelLeft.numberOfLines = 2;
     instructionsLabelLeft.textAlignment = NSTextAlignmentCenter;
     self.leftInstructionLabel = instructionsLabelLeft;
     
-    UILabel *instructionsLabelRight =  [[UILabel alloc] initWithFrame: CGRectMake(self.view.frame.size.width/2,mapHeight-self.view.frame.size.height+225,self.view.frame.size.width/2,self.view.frame.size.height-225)];
+    UILabel *instructionsLabelRight =  [[UILabel alloc] initWithFrame: CGRectMake(self.view.frame.size.width/2,mapHeight-self.view.frame.size.height+215,self.view.frame.size.width/2,self.view.frame.size.height-225)];
                        
         // set left label parameters
     instructionsLabelRight.text = @"Tap Here to Move Right";
     [self.fieldView addSubview:instructionsLabelRight];
     instructionsLabelRight.numberOfLines = 2;
-    [[instructionsLabelRight layer] setBackgroundColor: [[UIColor yellowColor] CGColor]];
+    [[instructionsLabelRight layer] setBackgroundColor: [[UIColor greenColor] CGColor]];
     instructionsLabelRight.textAlignment = NSTextAlignmentCenter;
     self.rightInstructionLabel = instructionsLabelRight;
     
@@ -113,7 +113,7 @@ bool l;
     // set left label parameters
     topTitle.text = @"Cube Juke";
     [self.fieldView addSubview:topTitle];
-    [[topTitle layer] setBackgroundColor: [[UIColor greenColor] CGColor]];
+    [[topTitle layer] setBackgroundColor: [[UIColor blackColor] CGColor]];
     topTitle.textAlignment = NSTextAlignmentCenter;
     self.topTitle = topTitle;
     
@@ -131,7 +131,7 @@ bool l;
     UIView* ballView=[[UIView alloc] initWithFrame:CGRectMake((self.view.bounds.size.width-ballSize)/2, self.view.frame.size.height - ballSize*2, ballSize,ballSize)];
     
         // set user ball parameters
-    ballView.backgroundColor=[UIColor blueColor];
+    ballView.backgroundColor=[UIColor whiteColor];
     [self.view addSubview:ballView];
     self.ballView = ballView;
     self.ballView.layer.cornerRadius=ballSize/2;
@@ -150,7 +150,7 @@ bool l;
         int x = arc4random() % (int)(self.view.bounds.size.width - holeSize);
         [self addHole: sectionView on: x and: y];
     }
-    //sectionView.backgroundColor = [UIColor blackColor];
+    //sectionView.backgroundColor = [UIColor greenColor];
     return sectionView;
 }
 
@@ -163,7 +163,7 @@ bool l;
     UIView* hole1=[[UIView alloc] initWithFrame:CGRectMake(x, y, holeSize, holeSize)];
     
     // set hole parameters
-    hole1.backgroundColor=[UIColor blackColor];
+    hole1.backgroundColor=[UIColor greenColor];
     [currentView addSubview:hole1];
 }
 
@@ -296,6 +296,15 @@ bool l;
 // When the user lost, display score and allow for playing again
 - (void) gameOver {
     
+    //save the score
+    
+    int hs = [[NSUserDefaults standardUserDefaults] integerForKey:@"highScore"];
+    
+    if(score>hs){
+        [[NSUserDefaults standardUserDefaults] setInteger:score forKey:@"highScore"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
     // invalidate timer, enable/disable appropriate buttons
     [self.ballMoveTimer invalidate];
     [self.refreshTimer invalidate];
@@ -309,7 +318,7 @@ bool l;
     UIView* gameOverView=[[UIView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-120, self.view.frame.size.height/2-120, 240,240)];
     
     // set game over view parameters
-    gameOverView.backgroundColor=[UIColor orangeColor];
+    gameOverView.backgroundColor=[UIColor whiteColor];
     [self.view addSubview:gameOverView];
     
     

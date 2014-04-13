@@ -21,6 +21,7 @@
 		41505CCC18F8E55B00B55778 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41505CAE18F8E55B00B55778 /* UIKit.framework */; };
 		41505CD418F8E55B00B55778 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 41505CD218F8E55B00B55778 /* InfoPlist.strings */; };
 		41505CD618F8E55B00B55778 /* FirstTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 41505CD518F8E55B00B55778 /* FirstTests.m */; };
+		416416AA18FA40F60097A669 /* MainScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 416416A918FA40F60097A669 /* MainScreenViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		41505CD118F8E55B00B55778 /* FirstTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FirstTests-Info.plist"; sourceTree = "<group>"; };
 		41505CD318F8E55B00B55778 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		41505CD518F8E55B00B55778 /* FirstTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstTests.m; sourceTree = "<group>"; };
+		416416A818FA40F60097A669 /* MainScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainScreenViewController.h; sourceTree = "<group>"; };
+		416416A918FA40F60097A669 /* MainScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainScreenViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,8 @@
 				41505CBC18F8E55B00B55778 /* Main.storyboard */,
 				41505CBF18F8E55B00B55778 /* ViewController.h */,
 				41505CC018F8E55B00B55778 /* ViewController.m */,
+				416416A818FA40F60097A669 /* MainScreenViewController.h */,
+				416416A918FA40F60097A669 /* MainScreenViewController.m */,
 				41505CC218F8E55B00B55778 /* Images.xcassets */,
 				41505CB118F8E55B00B55778 /* Supporting Files */,
 			);
@@ -250,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41505CC118F8E55B00B55778 /* ViewController.m in Sources */,
+				416416AA18FA40F60097A669 /* MainScreenViewController.m in Sources */,
 				41505CBB18F8E55B00B55778 /* AppDelegate.m in Sources */,
 				41505CB718F8E55B00B55778 /* main.m in Sources */,
 			);
@@ -456,6 +462,7 @@
 				41505CDB18F8E55B00B55778 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		41505CDC18F8E55B00B55778 /* Build configuration list for PBXNativeTarget "FirstTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +471,7 @@
 				41505CDE18F8E55B00B55778 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
