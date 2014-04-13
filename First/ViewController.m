@@ -15,7 +15,7 @@ int bufferHeight = 200;
 int sectionHeight = 500;
 int holeSize = 20;
 int ballSize = 25;
-int speed = 2;
+int speed = 1;
 int score = 0;
 int sectionNum = 1;
 
@@ -189,7 +189,7 @@ bool l;
     
     // initialize timer controlling how fast to refresh screen
     [self.refreshTimer invalidate];
-    self.refreshTimer = [NSTimer scheduledTimerWithTimeInterval:0.005
+    self.refreshTimer = [NSTimer scheduledTimerWithTimeInterval:0.006
                                                        target:self
                                                      selector:@selector(tick:)
                                                      userInfo:nil
